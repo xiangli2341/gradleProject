@@ -1,0 +1,8 @@
+group 'com.xans'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+}

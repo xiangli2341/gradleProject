@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(":api")
+    implementation ("org.springframework.boot:spring-boot-starter-web")
+    implementation ("org.springframework.boot:spring-boot-starter-actuator")
+    runtimeOnly 'mysql:mysql-connector-java:8.0.16'
+    //swagger调用地址 : http://localhost:8090/swagger-ui/index.html#/
+    implementation "io.springfox:springfox-boot-starter:3.0.0"
+}

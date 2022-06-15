@@ -1,0 +1,63 @@
+//应用于gradle 编译
+buildscript {
+    //定义
+    ext {
+        springBootVersion = "2.7.0"
+        lombokVersion ='1.18.10'
+        mysqlVersion = '8.0.16'
+    }
+    repositories {
+        //maven 中央仓库
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+// 所有子项目的通用配置
+subprojects {
+
+    //指定中央仓库 项目使用
+    repositories {
+        maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+        //maven 中央仓库
+        mavenCentral()
+    }
+
+    //应用插件
+    apply plugin: 'java'
+
+    apply plugin: 'org.springframework.boot'
+
+    apply plugin: 'io.spring.dependency-management'
+
+    //指定jdk版本
+    sourceCompatibility = 1.8
+
+    //设置group id
+    group 'com.xans'
+
+    //设置版本
+    version '1.0-SNAPSHOT'
+
+    description 'projec'
+
+    //依赖
+    dependencies {
+        testImplementation('org.springframework.boot:spring-boot-starter-test')
+        implementation('org.springframework.boot:spring-boot-starter')
+        implementation "org.projectlombok:lombok:${lombokVersion}"
+    }
+
+    //这里一定得要在多模块下，不然编译失败，因为不会把信赖模块给打包。
+    jar {
+        enabled = true
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
