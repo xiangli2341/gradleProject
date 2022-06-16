@@ -18,7 +18,6 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.oas.annotations.EnableOpenApi;
 import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
@@ -38,20 +37,10 @@ public class SpringFoxSwaggerConfig {
      * 配置基本信息
      * @return
      */
-//    @Bean
-//    public ApiInfo apiInfo() {
-//        return new ApiInfoBuilder()
-//                .title("Swagger Test App Restful API")
-//                .description("swagger test app restful api")
-//                .termsOfServiceUrl("https://github.com/geekxingyun")
-//                .contact(new Contact("技术宅星云","https://xingyun.blog.csdn.net","fairy_xingyun@hotmail.com"))
-//                .version("1.0")
-//                .build();
-//    }
     @Bean
     public ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Swagger3 RESTful API")    // 页面标题
+                .title("Swagger3 RESTFUL API")    // 页面标题
                 .version("3.0")                                // 版本号
                 .description("接口文档")                    // 描述
                 .build();
