@@ -15,10 +15,10 @@ public class TestController {
 
     @Autowired
     private BaseService baseService;
-
-    @ApiOperation(value = "测试get")
-    @GetMapping("/getStr")
-    public String get() {
-        return baseService.getStr();
+    @ApiOperation(value = "测试send")
+    @GetMapping("/sendStr")
+    public String send() {
+        return baseService.sendStr();
     }
+
 }

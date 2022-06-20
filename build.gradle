@@ -1,10 +1,12 @@
 //应用于gradle 编译
 buildscript {
-    //定义
+    //统一版本
     ext {
         springBootVersion = "2.7.0"
-        lombokVersion ='1.18.10'
+        lombokVersion ='1.18.24'
         mysqlVersion = '8.0.16'
+        hutoolVersion= '5.7.22'
+        mysqlVersion= '8.0.29'
     }
     repositories {
         //maven 中央仓库
@@ -49,7 +51,13 @@ subprojects {
     dependencies {
         testImplementation('org.springframework.boot:spring-boot-starter-test')
         implementation('org.springframework.boot:spring-boot-starter')
+
         implementation "org.projectlombok:lombok:${lombokVersion}"
+        //解决Gradle中 Enum枚举无法使用lombok注释问题
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: "${lombokVersion}"
+
+        implementation "cn.hutool:hutool-all:${hutoolVersion}"
+        runtimeOnly "mysql:mysql-connector-java:${mysqlVersion}"
     }
 
     //这里一定得要在多模块下，不然编译失败，因为不会把信赖模块给打包。
